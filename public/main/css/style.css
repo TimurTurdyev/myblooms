@@ -2628,10 +2628,11 @@ footer .subheader {
     display: flex;
     justify-content: center;
     text-align: center;
+    flex-wrap: wrap;
 }
 .size span {
     display: inline-block;
-    border-radius: 50%;
+    border-radius: 8%;
     text-align: center;
     vertical-align: middle;
     border: 0.5px solid #332A40;
