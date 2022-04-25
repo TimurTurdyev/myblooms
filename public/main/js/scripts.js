@@ -89,7 +89,7 @@ $(document).ready(function () {
             data.product = product;
         }
 
-        $('.modal__bouquet').find('input[name=setting]').val(JSON.stringify(data));
+        $('.modal__bouquet').find('input[name=setting]').val(data ? JSON.stringify(data) : '');
 
         $('.overlay').fadeIn(297, function () {
             $('.modal__bouquet')
