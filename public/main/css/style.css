@@ -872,6 +872,7 @@ h1 span {
     background-color: #ffffff;
     padding-bottom: 90px;
     margin: 0 10px 30px;
+    flex: 0 0 auto;
 }
 
 .all-bouquets img {
