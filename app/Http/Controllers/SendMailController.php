@@ -16,7 +16,7 @@ class SendMailController extends Controller
             $request_data['setting'] = json_decode($request_data['setting'], 1);
         }
 
-        Mail::to($request->user())->send(new SendFormMail($request_data));
+        Mail::to(setting('email', ''))->send(new SendFormMail($request_data));
 
         return response()->json(['location' => route('thanks')]);
     }
