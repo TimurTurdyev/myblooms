@@ -864,6 +864,7 @@ h1 span {
 .all-bouquets {
     position: relative;
     max-width: 280px;
+    width: 100%;
     text-align: center;
     -webkit-box-shadow: 0 15px 30px rgba(225, 109, 122, 0.14);
     box-shadow: 0 15px 30px rgba(225, 109, 122, 0.14);
@@ -871,16 +872,15 @@ h1 span {
     background-color: #ffffff;
     padding-bottom: 90px;
     margin: 0 10px 30px;
-    width: 100%;
 }
 
 .all-bouquets img {
     margin-bottom: 30px;
     border-radius: 20px 20px 0px 0px;
     max-width: 100%;
+    width: 100%;
     height: 290px;
     object-fit: cover;
-    width: 100%;
 }
 
 .all-bouquets h4 {
@@ -2648,8 +2648,4 @@ footer .subheader {
 .size span.active {
     color: #D46E79;
     border: 1px solid #D46E79;
-}
-
-small {
-    font-size: 80%;
 }
