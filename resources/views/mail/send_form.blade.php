@@ -9,11 +9,4 @@
     @endforeach
 
     Комментарий: {{ $comment }}
-
-    @component('mail::button', ['url' => config('app.url')])
-        На сайт
-    @endcomponent
-
-    Thanks,<br>
-    {{ config('app.name') }}
 @endcomponent
