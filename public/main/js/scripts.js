@@ -85,7 +85,7 @@ $(document).ready(function () {
         var data = $(this).closest('li').find('.size > .active').data();
         var product = $(this).data('product');
 
-        if (product) {
+        if (data && product) {
             data.product = product;
         }
 
