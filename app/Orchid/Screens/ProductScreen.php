@@ -3,6 +3,8 @@
 namespace App\Orchid\Screens;
 
 use App\Models\Product;
+use Illuminate\Http\Request;
+use Orchid\Platform\Models\User;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\Link;
@@ -10,6 +12,7 @@ use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
 use Orchid\Support\Facades\Layout;
+use Orchid\Support\Facades\Toast;
 
 class ProductScreen extends Screen
 {
@@ -116,5 +119,15 @@ class ProductScreen extends Screen
                     }),
             ]),
         ];
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function remove(Request $request, Product $product): void
+    {
+        $product->delete();
+
+        Toast::info(__('Товар успешно удален!'));
     }
 }
