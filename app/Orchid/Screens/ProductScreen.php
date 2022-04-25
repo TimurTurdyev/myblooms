@@ -63,9 +63,18 @@ class ProductScreen extends Screen
             Layout::table('products', [
                 TD::make('group', 'Группа')
                     ->sort()
-                    ->cantHide()
                     ->render(function (Product $product) {
                         return $product->group?->name ?? '-';
+                    }),
+
+                TD::make('attachment', 'фото')
+                    ->sort()
+                    ->width(100)
+                    ->render(function (Product $product) {
+                        if ($image = $product->attachment->first()) {
+                            return "<img src='{$image->url}' class='mw-100 d-block img-fluid'>";
+                        }
+                        return '-';
                     }),
 
                 TD::make('name', 'Товар')
@@ -87,7 +96,6 @@ class ProductScreen extends Screen
 
                 TD::make('sort', 'Сортировка')
                     ->sort()
-                    ->cantHide()
                     ->render(function (Product $product) {
                         return $product->sort;
                     }),
