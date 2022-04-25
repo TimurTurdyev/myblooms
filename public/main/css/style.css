@@ -881,6 +881,7 @@ h1 span {
     width: 100%;
     height: 290px;
     object-fit: cover;
+    display: block;
 }
 
 .all-bouquets h4 {
