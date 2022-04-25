@@ -871,6 +871,7 @@ h1 span {
     background-color: #ffffff;
     padding-bottom: 90px;
     margin: 0 10px 30px;
+    width: 100%;
 }
 
 .all-bouquets img {
@@ -878,6 +879,8 @@ h1 span {
     border-radius: 20px 20px 0px 0px;
     max-width: 100%;
     height: 290px;
+    object-fit: cover;
+    width: 100%;
 }
 
 .all-bouquets h4 {
@@ -2645,4 +2648,8 @@ footer .subheader {
 .size span.active {
     color: #D46E79;
     border: 1px solid #D46E79;
+}
+
+small {
+    font-size: 80%;
 }

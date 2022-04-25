@@ -129,9 +129,7 @@
                                 <span class="text">{{ $price->text }}</span>
                             @endif
                             @if( $text = $product->attributesCollection() )
-                                <small>
-                                    {{ $text->join(', ') }}
-                                </small>
+                                <span class="text">{{ $text->join(', ') }}</span>
                             @endif
 
                             @if( $price = $prices->first() )
