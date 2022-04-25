@@ -69,7 +69,17 @@ class ProductScreen extends Screen
                     ->sort()
                     ->cantHide()
                     ->render(function (Product $product) {
-                        return $product->name;
+                        $prices = $product->pricesCollection()->map(function ($item) {
+                            $text = [];
+                            if ($item->name) {
+                                $text[] = $item->name;
+                            }
+                            $text[] = $item->price;
+                            $text[] = $item->text;
+                            $text = join(', ', $text);
+                            return "{$text}";
+                        })->join('<br>');
+                        return "{$product->name}<br>{$prices}";
                     }),
 
                 TD::make('sort', 'Сортировка')
