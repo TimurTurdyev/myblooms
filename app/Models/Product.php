@@ -46,18 +46,25 @@ class Product extends Model
         return $this->belongsTo(Group::class);
     }
 
-    public function scopeAttributesCollection()
+    public function attributesCollection()
     {
         return collect($this->setting['attributes'] ?? [])->map(function ($item) {
             return $item['text'];
         })->filter(fn($item) => (bool)str_replace(' ', '', $item));
     }
 
-    public function scopePricesCollection()
+    public function pricesCollection()
     {
-        return collect($this->setting['prices'] ?? [])->map(function ($item) {
+        $main_price = str($this->setting['main_price'] ?? '')->trim(' ')->upper()->toString();
+
+        return collect($this->setting['prices'] ?? [])->map(function ($item) use ($main_price) {
             $item = (object)$item;
             $item->price = $item->price . ' руб.';
+
+            if ($item->name) {
+                $name = str($item->name)->trim(' ')->upper()->toString();
+                $item->checked = $name === $main_price;
+            }
 
             if ($item->text) {
                 $item->text = collect(explode(PHP_EOL, $item->text))
@@ -70,5 +77,27 @@ class Product extends Model
 
             return $item;
         });
+    }
+
+    public function priceFirst()
+    {
+        $prices = $this->pricesCollection();
+
+        if ($this->setting['main_price'] ?? '') {
+            $mainPrices = $prices->first(function ($value) {
+                return $value->checked;
+            });
+
+            if ($mainPrices) {
+                return $mainPrices;
+            }
+        }
+
+        return $prices->first();
+    }
+
+    public function mainPrice()
+    {
+        return $this->setting['main_price'] ?? '';
     }
 }

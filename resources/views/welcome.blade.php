@@ -123,29 +123,44 @@
                             @endforeach
                             <h4>{{ $product->name }}</h4>
                             @php
+                                $price = $product->priceFirst();
+
                                 $prices = $product->pricesCollection();
+                                $main_price = $product->mainPrice();
                             @endphp
-                            @if( $price = $prices->first() )
+                            @if( $price )
                                 <span class="text">{{ $price->text }}</span>
                             @endif
                             @if( $text = $product->attributesCollection() )
                                 <span>{{ $text->join(', ') }}</span>
                             @endif
 
-                            @if( $price = $prices->first() )
+                            @if( $price )
                                 <p class="price">{{ $price->price }}</p>
                             @endif
+
                             @if( $prices->count() > 1)
                                 <div class="size">
                                     @foreach( $prices as $price )
-                                        <span
-                                            data-option=" {{ $price->name }}"
-                                            data-text="{{ $price->text }}"
-                                            data-price="{{ $price->price }}"
-                                            class="@if( $loop->first ) active @endif"
-                                        >
+                                        @if( $main_price )
+                                            <span
+                                                data-option=" {{ $price->name }}"
+                                                data-text="{{ $price->text }}"
+                                                data-price="{{ $price->price }}"
+                                                class="@if( $price->checked ) active @endif"
+                                            >
                                             {{ $price->name }}
                                         </span>
+                                        @else
+                                            <span
+                                                data-option=" {{ $price->name }}"
+                                                data-text="{{ $price->text }}"
+                                                data-price="{{ $price->price }}"
+                                                class="@if( $loop->first ) active @endif"
+                                            >
+                                            {{ $price->name }}
+                                        </span>
+                                        @endif
                                     @endforeach
                                 </div>
                             @endif

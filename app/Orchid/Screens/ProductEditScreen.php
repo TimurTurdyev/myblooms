@@ -82,6 +82,13 @@ class ProductEditScreen extends Screen
                             'Аттрибут' => 'text',
                         ])->title('Аттрибуты по умолчанию'),
 
+                    Input::make('product.setting.main_price')
+                        ->type('text')
+                        ->max(255)
+                        ->required()
+                        ->title('Название для первой выбранной опции')
+                        ->placeholder('Название для первой выбранной опции'),
+
                     Matrix::make('product.setting.prices')
                         ->columns([
                             'Опция' => 'name',
