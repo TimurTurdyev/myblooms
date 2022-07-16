@@ -566,6 +566,7 @@ input {
 
 .logo-descr img {
     margin-right: 47px;
+    max-width: 350px;
 }
 
 .mobile-phone-icon {
